@@ -1,14 +1,18 @@
 import { useForm } from 'react-hook-form';
 import { Error } from './Error';
+import type { DraftPatient } from '../types/index';
 
 export const PatientForm = () => {
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  console.log(errors);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<DraftPatient>();
 
-  const regiterPatient = () => {
+  const regiterPatient = (data: DraftPatient) => {
     console.log('Nuevo paciente');
-    console.log();
+    console.log(data);
   }
 
   return (
@@ -50,7 +54,7 @@ export const PatientForm = () => {
             errors.name &&
             (
               <Error>
-                { errors.name?.message?.toString() }
+                { errors.name?.message }
               </Error>
             )
           }
@@ -73,7 +77,7 @@ export const PatientForm = () => {
             errors.caretaker &&
             (
               <Error>
-                { errors.caretaker?.message?.toString() }
+                { errors.caretaker?.message }
               </Error>
             )
           }
@@ -100,7 +104,7 @@ export const PatientForm = () => {
             errors.email &&
             (
               <Error>
-                { errors.email?.message?.toString() }
+                { errors.email?.message }
               </Error>
             )
           }
@@ -122,7 +126,7 @@ export const PatientForm = () => {
             errors.date &&
             (
               <Error>
-                { errors.date?.message?.toString() }
+                { errors.date?.message }
               </Error>
             )
           }
@@ -144,7 +148,7 @@ export const PatientForm = () => {
             errors.symptoms &&
             (
               <Error>
-                { errors.symptoms?.message?.toString() }
+                { errors.symptoms?.message }
               </Error>
             )
           }
