@@ -1,8 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { Error } from './Error';
 import type { DraftPatient } from '../types/index';
+import { usePatientStore } from '../store';
 
 export const PatientForm = () => {
+  // const { addPatient } = usePatientStore();
+  const addPatient = usePatientStore(state => state.addPatient);
 
   const {
     register,
@@ -10,9 +13,9 @@ export const PatientForm = () => {
     formState: { errors },
   } = useForm<DraftPatient>();
 
-  const regiterPatient = (data: DraftPatient) => {
+  const registerPatient = (data: DraftPatient) => {
     console.log('Nuevo paciente');
-    console.log(data);
+    addPatient(data);
   }
 
   return (
@@ -31,7 +34,7 @@ export const PatientForm = () => {
       <form
         className='bg-white shadow-md rounded-lg py-10 px-5 mb-10'
         noValidate
-        onSubmit={ handleSubmit(regiterPatient) }
+        onSubmit={ handleSubmit(registerPatient) }
       >
         <div className='mb-5'>
           <label htmlFor='name' className='text-sm uppercase font-bold'>
