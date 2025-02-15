@@ -1,12 +1,12 @@
 
 
 export type Patient = {
-  id: string;
-  name: string;
-  caretaker: string;
-  email: string;
+  id: string,
+  name: string,
+  caretaker: string,
+  email: string,
   date: Date,
-  symptoms: string;
+  symptoms: string,
 }
 
 export type DraftPatient = Omit<Patient, 'id'>;

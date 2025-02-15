@@ -11,11 +11,12 @@ export const PatientForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<DraftPatient>();
 
   const registerPatient = (data: DraftPatient) => {
-    console.log('Nuevo paciente');
     addPatient(data);
+    reset();
   }
 
   return (
