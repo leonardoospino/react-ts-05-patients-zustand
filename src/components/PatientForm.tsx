@@ -6,6 +6,9 @@ import { usePatientStore } from '../store';
 export const PatientForm = () => {
   // const { addPatient } = usePatientStore();
   const addPatient = usePatientStore(state => state.addPatient);
+  const activeId = usePatientStore(state => state.activeId);
+
+  console.log(activeId);
 
   const {
     register,
