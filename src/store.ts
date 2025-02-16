@@ -34,5 +34,5 @@ export const usePatientStore = create<PatientState>()(
         activeId: patientId,
       }));
     },
-  }
+  },
 )));

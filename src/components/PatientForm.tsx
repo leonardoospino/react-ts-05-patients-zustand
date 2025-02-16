@@ -2,17 +2,20 @@ import { useForm } from 'react-hook-form';
 import { Error } from './Error';
 import type { DraftPatient } from '../types/index';
 import { usePatientStore } from '../store';
+import { useEffect } from 'react';
 
 export const PatientForm = () => {
   // const { addPatient } = usePatientStore();
   const addPatient = usePatientStore(state => state.addPatient);
   const activeId = usePatientStore(state => state.activeId);
+  const patients = usePatientStore(state => state.patients);
 
   console.log(activeId);
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
     reset,
   } = useForm<DraftPatient>();
@@ -21,6 +24,22 @@ export const PatientForm = () => {
     addPatient(data);
     reset();
   }
+
+  useEffect(
+    () => {
+      console.log('Cambió el active id');
+
+      if (activeId) {
+        const activePatient = patients.find(({ id }) => id === activeId)!;
+        setValue('name', activePatient.name);
+        setValue('caretaker', activePatient.caretaker);
+        setValue('email', activePatient.email);
+        setValue('date', activePatient.date);
+        setValue('symptoms', activePatient.symptoms);
+      }
+    },
+    [activeId]
+  );
 
   return (
     <div className='md:w-1/2 lg:w-2/5 mx-5'>

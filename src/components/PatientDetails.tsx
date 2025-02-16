@@ -27,7 +27,7 @@ export const PatientDetails = ({ patient } : PatientDetailsProps) => {
       <PatientDetailItem label='Fecha Alta' data={ patient.date.toString() } />
       <PatientDetailItem label='Síntomas' data={ patient.symptoms } />
 
-      <div className='flex justify-between gap-3 mt-10'>
+      <div className='flex flex-col lg:flex-row justify-between gap-3 mt-10'>
         <button
           type='button'
           className='py-2 px-10 bg-indigo-600 hover:border-indigo-700 text-white font-bold uppercase rounded-lg'
