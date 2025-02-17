@@ -1,3 +1,5 @@
+
+import { toast } from 'react-toastify';
 import { usePatientStore } from '../store'
 import { Patient } from '../types'
 import { PatientDetailItem } from './PatientDetailItem'
@@ -16,6 +18,7 @@ export const PatientDetails = ({ patient } : PatientDetailsProps) => {
 
   const handleDelete = () => {
     deletePatient(patient.id);
+    toast.error('Paciente eliminado correctamente!');
   }
 
   return (
